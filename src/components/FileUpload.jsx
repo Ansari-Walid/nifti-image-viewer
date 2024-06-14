@@ -11,10 +11,10 @@ function FileUpload({ onFileUpload }) {
 
       try {
         if (nifti.isCompressed(arrayBuffer)) {
-          const decompressed = nifti.decompress(arrayBuffer);
-          if (nifti.isNIFTI(decompressed)) {
-            niftiHeader = nifti.readHeader(decompressed);
-            niftiImage = nifti.readImage(niftiHeader, decompressed);
+          const data = nifti.decompress(arrayBuffer);
+          if (nifti.isNIFTI(data)) {
+            niftiHeader = nifti.readHeader(data);
+            niftiImage = nifti.readImage(niftiHeader, data);
           }
         } else if (nifti.isNIFTI(arrayBuffer)) {
           niftiHeader = nifti.readHeader(arrayBuffer);
